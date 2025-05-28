@@ -14,42 +14,43 @@ import ReviewsList from '../../components/Reviews/ReviewsList';
 import { 
   StarIcon,
   CalendarIcon,
-  BookOpenIcon,
+  ClockIcon,
   UserIcon,
-  ChatBubbleLeftIcon
+  ChatBubbleLeftIcon,
+  FilmIcon
 } from '@heroicons/react/24/outline';
 import { StarIcon as StarSolidIcon } from '@heroicons/react/24/solid';
 
-const BookDetail = () => {
+const MovieDetail = () => {
   const { id } = useParams();
   const { isAuthenticated, user } = useAuth();
   const [showReviewModal, setShowReviewModal] = useState(false);
 
-  const { data: bookData, loading, error, refetch } = useApi(
-    API_ENDPOINTS.BOOKS.DETAIL(id)
+  const { data: movieData, loading, error, refetch } = useApi(
+    API_ENDPOINTS.MOVIES.DETAIL(id)
   );
 
   const { mutate } = useApiMutation();
 
   if (loading) {
-    return <LoadingSpinner text="Loading book details..." />;
+    return <LoadingSpinner text="Loading movie details..." />;
   }
 
   if (error) {
     return <ErrorMessage message={error} onRetry={refetch} />;
   }
 
-  const book = bookData?.data;
-  const reviews = book?.reviews || [];
+  const movie = movieData?.data;
+  const reviews = movie?.reviews || [];
 
-  if (!book) {
-    return <ErrorMessage message="Book not found" />;
+  if (!movie) {
+    return <ErrorMessage message="Movie not found" />;
   }
 
   const handleReviewSubmit = async (reviewData) => {
     const result = await mutate('post', API_ENDPOINTS.REVIEWS.CREATE, {
       ...reviewData,
-      itemType: 'book',
+      itemType: 'movie',
       itemId: id
     });
 
@@ -93,21 +94,21 @@ const BookDetail = () => {
         <ol className="flex items-center space-x-2 text-sm text-vintage-sepia">
           <li><Link to="/" className="vintage-link">Home</Link></li>
           <li>/</li>
-          <li><Link to="/books" className="vintage-link">Books</Link></li>
+          <li><Link to="/movies" className="vintage-link">Movies</Link></li>
           <li>/</li>
-          <li className="text-vintage-brown">{book.title}</li>
+          <li className="text-vintage-brown">{movie.title}</li>
         </ol>
       </nav>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        {/* Book Cover & Info */}
+        {/* Movie Poster & Info */}
         <div className="lg:col-span-1">
           <Card className="sticky top-8">
-            {/* Cover Image */}
-            <div className="aspect-[3/4] mb-6 overflow-hidden rounded-lg">
+            {/* Poster */}
+            <div className="aspect-[2/3] mb-6 overflow-hidden rounded-lg">
               <img
-                src={book.coverImage || '/placeholder-book.jpg'}
-                alt={book.title}
+                src={movie.poster || '/placeholder-movie.jpg'}
+                alt={movie.title}
                 className="w-full h-full object-cover"
               />
             </div>
@@ -115,23 +116,23 @@ const BookDetail = () => {
             {/* Quick Info */}
             <div className="space-y-4">
               {/* Rating */}
-              {book.averageRating > 0 && (
+              {movie.averageRating > 0 && (
                 <div className="flex items-center space-x-2">
                   <div className="flex items-center">
-                    {renderStars(book.averageRating)}
+                    {renderStars(movie.averageRating)}
                   </div>
                   <span className="font-medium text-vintage-brown">
-                    {book.averageRating.toFixed(1)}
+                    {movie.averageRating.toFixed(1)}
                   </span>
                   <span className="text-sm text-vintage-sepia">
-                    ({book.totalReviews} reviews)
+                    ({movie.totalReviews} reviews)
                   </span>
                 </div>
               )}
 
               {/* Genres */}
               <div className="flex flex-wrap gap-2">
-                {book.genre?.map((genre) => (
+                {movie.genre?.map((genre) => (
                   <Badge key={genre} variant="primary">
                     {genre}
                   </Badge>
@@ -142,21 +143,45 @@ const BookDetail = () => {
               <div className="space-y-2 text-sm">
                 <div className="flex items-center space-x-2 text-vintage-sepia">
                   <CalendarIcon className="w-4 h-4" />
-                  <span>Published: {book.publishedYear}</span>
+                  <span>Released: {movie.releaseYear}</span>
                 </div>
                 
-                {book.isbn && (
+                <div className="flex items-center space-x-2 text-vintage-sepia">
+                  <ClockIcon className="w-4 h-4" />
+                  <span>Duration: {movie.duration} minutes</span>
+                </div>
+
+                {movie.country && (
                   <div className="flex items-center space-x-2 text-vintage-sepia">
-                    <BookOpenIcon className="w-4 h-4" />
-                    <span>ISBN: {book.isbn}</span>
+                    <FilmIcon className="w-4 h-4" />
+                    <span>Country: {movie.country}</span>
                   </div>
                 )}
 
                 <div className="flex items-center space-x-2 text-vintage-sepia">
                   <UserIcon className="w-4 h-4" />
-                  <span>Added by: {book.createdBy?.fullName || book.createdBy?.username}</span>
+                  <span>Added by: {movie.createdBy?.fullName || movie.createdBy?.username}</span>
                 </div>
               </div>
+
+              {/* Cast */}
+              {movie.cast?.length > 0 && (
+                <div>
+                  <h4 className="font-medium text-vintage-brown mb-2">Cast</h4>
+                  <div className="flex flex-wrap gap-1">
+                    {movie.cast.slice(0, 5).map((actor, index) => (
+                      <Badge key={index} size="sm" variant="secondary">
+                        {actor}
+                      </Badge>
+                    ))}
+                    {movie.cast.length > 5 && (
+                      <Badge size="sm" variant="secondary">
+                        +{movie.cast.length - 5} more
+                      </Badge>
+                    )}
+                  </div>
+                </div>
+              )}
 
               {/* Actions */}
               {isAuthenticated && (
@@ -176,19 +201,19 @@ const BookDetail = () => {
 
         {/* Main Content */}
         <div className="lg:col-span-2 space-y-8">
-          {/* Book Header */}
+          {/* Movie Header */}
           <div>
             <h1 className="text-4xl font-serif font-bold text-vintage-brown mb-2">
-              {book.title}
+              {movie.title}
             </h1>
             <p className="text-xl text-vintage-sepia mb-4">
-              by <span className="font-medium">{book.author}</span>
+              Directed by <span className="font-medium">{movie.director}</span>
             </p>
             
             {/* Tags */}
-            {book.tags?.length > 0 && (
+            {movie.tags?.length > 0 && (
               <div className="flex flex-wrap gap-2">
-                {book.tags.map((tag) => (
+                {movie.tags.map((tag) => (
                   <Badge key={tag} size="sm" variant="secondary">
                     #{tag}
                   </Badge>
@@ -197,23 +222,60 @@ const BookDetail = () => {
             )}
           </div>
 
-          {/* Description */}
+          {/* Synopsis */}
           <Card>
             <h2 className="text-2xl font-serif font-semibold text-vintage-brown mb-4">
-              About This Book
+              Synopsis
             </h2>
             <div className="prose prose-vintage max-w-none">
               <p className="text-vintage-sepia leading-relaxed whitespace-pre-line">
-                {book.description}
+                {movie.description}
               </p>
             </div>
           </Card>
+
+          {/* Additional Info */}
+          {(movie.cast?.length > 0 || movie.writer || movie.producer) && (
+            <Card>
+              <h2 className="text-2xl font-serif font-semibold text-vintage-brown mb-4">
+                Cast & Crew
+              </h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {movie.writer && (
+                  <div>
+                    <h3 className="font-medium text-vintage-brown mb-2">Writer</h3>
+                    <p className="text-vintage-sepia">{movie.writer}</p>
+                  </div>
+                )}
+                
+                {movie.producer && (
+                  <div>
+                    <h3 className="font-medium text-vintage-brown mb-2">Producer</h3>
+                    <p className="text-vintage-sepia">{movie.producer}</p>
+                  </div>
+                )}
+                
+                {movie.cast?.length > 0 && (
+                  <div className="md:col-span-2">
+                    <h3 className="font-medium text-vintage-brown mb-2">Cast</h3>
+                    <div className="flex flex-wrap gap-2">
+                      {movie.cast.map((actor, index) => (
+                        <Badge key={index} variant="secondary">
+                          {actor}
+                        </Badge>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
+            </Card>
+          )}
 
           {/* Reviews Section */}
           <Card>
             <div className="flex items-center justify-between mb-6">
               <h2 className="text-2xl font-serif font-semibold text-vintage-brown">
-                Reviews ({book.totalReviews || 0})
+                Reviews ({movie.totalReviews || 0})
               </h2>
               
               {isAuthenticated && (
@@ -228,7 +290,7 @@ const BookDetail = () => {
 
             <ReviewsList 
               reviews={reviews}
-              itemType="book"
+              itemType="movie"
               itemId={id}
               onUpdate={refetch}
             />
@@ -244,8 +306,8 @@ const BookDetail = () => {
         size="lg"
       >
         <ReviewForm
-          itemType="book"
-          itemTitle={book.title}
+          itemType="movie"
+          itemTitle={movie.title}
           onSubmit={handleReviewSubmit}
           onCancel={() => setShowReviewModal(false)}
         />
@@ -254,4 +316,4 @@ const BookDetail = () => {
   );
 };
 
-export default BookDetail;
+export default MovieDetail;

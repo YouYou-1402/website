@@ -27,3 +27,67 @@ module.exports = {
   },
   plugins: [],
 }
+
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: [
+    "./src/**/*.{js,jsx,ts,tsx}",
+    "./public/index.html"
+  ],
+  theme: {
+    extend: {
+      colors: {
+        vintage: {
+          brown: '#8B4513',
+          lightbrown: '#D2B48C',
+          sepia: '#704214',
+          gold: '#DAA520',
+          cream: '#F5F5DC'
+        }
+      },
+      fontFamily: {
+        'serif': ['Playfair Display', 'serif'],
+        'sans': ['Inter', 'sans-serif']
+      },
+      spacing: {
+        '18': '4.5rem',
+        '88': '22rem',
+        '128': '32rem'
+      },
+      animation: {
+        'fade-in': 'fadeIn 0.5s ease-in-out',
+        'slide-up': 'slideUp 0.6s ease-out',
+        'scale-in': 'scaleIn 0.4s ease-out'
+      },
+      backdropBlur: {
+        'xs': '2px'
+      },
+      typography: (theme) => ({
+        vintage: {
+          css: {
+            '--tw-prose-body': theme('colors.vintage.sepia'),
+            '--tw-prose-headings': theme('colors.vintage.brown'),
+            '--tw-prose-links': theme('colors.vintage.brown'),
+            '--tw-prose-bold': theme('colors.vintage.brown'),
+            '--tw-prose-counters': theme('colors.vintage.sepia'),
+            '--tw-prose-bullets': theme('colors.vintage.lightbrown'),
+            '--tw-prose-hr': theme('colors.vintage.lightbrown'),
+            '--tw-prose-quotes': theme('colors.vintage.brown'),
+            '--tw-prose-quote-borders': theme('colors.vintage.gold'),
+            '--tw-prose-captions': theme('colors.vintage.sepia'),
+            '--tw-prose-code': theme('colors.vintage.brown'),
+            '--tw-prose-pre-code': theme('colors.vintage.cream'),
+            '--tw-prose-pre-bg': theme('colors.vintage.brown'),
+            '--tw-prose-th-borders': theme('colors.vintage.lightbrown'),
+            '--tw-prose-td-borders': theme('colors.vintage.lightbrown')
+          }
+        }
+      })
+    }
+  },
+  plugins: [
+    require('@tailwindcss/typography'),
+    require('@tailwindcss/forms'),
+    require('@tailwindcss/aspect-ratio')
+  ]
+}

@@ -1,0 +1,233 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
+
+/* Base Styles */
+@layer base {
+  html {
+    font-family: 'Inter', sans-serif;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
+  }
+  
+  body {
+    @apply bg-vintage-cream text-vintage-brown;
+  }
+}
+
+/* Component Styles */
+@layer components {
+  .vintage-input {
+    @apply w-full px-4 py-3 border border-vintage-lightbrown rounded-lg bg-white/80 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-vintage-gold focus:border-transparent transition-all duration-200 placeholder-vintage-sepia/60;
+  }
+  
+  .vintage-button {
+    @apply inline-flex items-center justify-center px-6 py-3 border border-transparent text-sm font-medium rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2;
+  }
+  
+  .vintage-button-primary {
+    @apply vintage-button bg-vintage-brown text-vintage-cream hover:bg-vintage-sepia focus:ring-vintage-brown shadow-lg hover:shadow-xl transform hover:-translate-y-0.5;
+  }
+  
+  .vintage-button-secondary {
+    @apply vintage-button bg-vintage-gold text-vintage-brown hover:bg-vintage-gold/80 focus:ring-vintage-gold shadow-lg hover:shadow-xl transform hover:-translate-y-0.5;
+  }
+  
+  .vintage-button-outline {
+    @apply vintage-button bg-transparent text-vintage-brown border-vintage-brown hover:bg-vintage-brown hover:text-vintage-cream focus:ring-vintage-brown;
+  }
+  
+  .vintage-card {
+    @apply bg-white/90 backdrop-blur-sm rounded-xl shadow-lg border border-vintage-lightbrown/30 p-6 transition-all duration-200 hover:shadow-xl hover:border-vintage-gold/50;
+  }
+  
+  .vintage-link {
+    @apply text-vintage-brown hover:text-vintage-gold transition-colors duration-200 underline decoration-vintage-lightbrown hover:decoration-vintage-gold;
+  }
+  
+  .vintage-badge {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-medium;
+  }
+  
+  .vintage-badge-primary {
+    @apply vintage-badge bg-vintage-brown text-vintage-cream;
+  }
+  
+  .vintage-badge-secondary {
+    @apply vintage-badge bg-vintage-lightbrown text-vintage-brown;
+  }
+  
+  .vintage-badge-gold {
+    @apply vintage-badge bg-vintage-gold text-vintage-brown;
+  }
+}
+
+/* Utility Classes */
+@layer utilities {
+  .text-shadow {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .backdrop-blur-light {
+    backdrop-filter: blur(8px);
+  }
+  
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  
+  .prose-vintage {
+    @apply prose prose-lg prose-stone max-w-none;
+  }
+  
+  .prose-vintage h1,
+  .prose-vintage h2,
+  .prose-vintage h3,
+  .prose-vintage h4,
+  .prose-vintage h5,
+  .prose-vintage h6 {
+    @apply text-vintage-brown font-serif;
+  }
+  
+  .prose-vintage p {
+    @apply text-vintage-sepia leading-relaxed;
+  }
+  
+  .prose-vintage a {
+    @apply vintage-link;
+  }
+  
+  .prose-vintage blockquote {
+    @apply border-l-4 border-vintage-gold bg-vintage-cream/50 rounded-r-lg;
+  }
+  
+  .prose-vintage code {
+    @apply bg-vintage-lightbrown/20 text-vintage-brown px-2 py-1 rounded;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-vintage-cream;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-vintage-lightbrown rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-vintage-brown;
+}
+
+/* Animation Classes */
+.fade-in {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.slide-up {
+  animation: slideUp 0.6s ease-out;
+}
+
+.scale-in {
+  animation: scaleIn 0.4s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Loading Animation */
+.loading-spinner {
+  border: 3px solid #f3f3f3;
+  border-top: 3px solid #8B4513;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Print Styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  
+  body {
+    @apply bg-white text-black;
+  }
+  
+  .vintage-card {
+    @apply bg-white border border-gray-300 shadow-none;
+  }
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+  .vintage-button-primary {
+    @apply bg-black text-white border-2 border-black;
+  }
+  
+  .vintage-link {
+    @apply text-blue-800 underline;
+  }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
