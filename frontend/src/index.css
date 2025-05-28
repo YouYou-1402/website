@@ -1,0 +1,132 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* Custom vintage styles */
+@layer base {
+  body {
+    @apply bg-vintage-cream text-vintage-darkbrown font-sans;
+    background-image: 
+      radial-gradient(circle at 25px 25px, rgba(139, 69, 19, 0.1) 2%, transparent 0%), 
+      radial-gradient(circle at 75px 75px, rgba(218, 165, 32, 0.1) 2%, transparent 0%);
+    background-size: 100px 100px;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif text-vintage-brown;
+  }
+}
+
+@layer components {
+  .vintage-card {
+    @apply bg-white/80 backdrop-blur-sm border border-vintage-lightbrown/30 rounded-lg shadow-lg;
+    box-shadow: 
+      0 4px 6px -1px rgba(139, 69, 19, 0.1),
+      0 2px 4px -1px rgba(139, 69, 19, 0.06),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  }
+  
+  .vintage-btn {
+    @apply px-6 py-3 bg-vintage-brown text-vintage-cream font-medium rounded-md transition-all duration-200 hover:bg-vintage-darkbrown hover:shadow-lg transform hover:-translate-y-0.5;
+  }
+  
+  .vintage-btn-outline {
+    @apply px-6 py-3 border-2 border-vintage-brown text-vintage-brown font-medium rounded-md transition-all duration-200 hover:bg-vintage-brown hover:text-vintage-cream;
+  }
+  
+  .vintage-input {
+    @apply w-full px-4 py-3 border border-vintage-lightbrown rounded-md bg-white/50 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-vintage-gold focus:border-transparent;
+  }
+  
+  .vintage-textarea {
+    @apply w-full px-4 py-3 border border-vintage-lightbrown rounded-md bg-white/50 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-vintage-gold focus:border-transparent resize-vertical min-h-[120px];
+  }
+  
+  .vintage-link {
+    @apply text-vintage-brown hover:text-vintage-gold transition-colors duration-200 font-medium;
+  }
+  
+  .vintage-badge {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-vintage-gold/20 text-vintage-sepia;
+  }
+  
+  .vintage-divider {
+    @apply border-t border-vintage-lightbrown/50 my-8;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-vintage-cream;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-vintage-lightbrown rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-vintage-brown;
+}
+
+/* Vintage animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.fade-in {
+  animation: fadeIn 0.4s ease-out;
+}
+
+/* Vintage text effects */
+.vintage-text-shadow {
+  text-shadow: 2px 2px 4px rgba(139, 69, 19, 0.3);
+}
+
+.vintage-drop-shadow {
+  filter: drop-shadow(2px 2px 4px rgba(139, 69, 19, 0.2));
+}
+
+/* Loading spinner */
+.vintage-spinner {
+  border: 3px solid rgba(139, 69, 19, 0.1);
+  border-radius: 50%;
+  border-top: 3px solid #8B4513;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Responsive typography */
+@media (max-width: 640px) {
+  h1 { @apply text-2xl; }
+  h2 { @apply text-xl; }
+  h3 { @apply text-lg; }
+}
