@@ -1,36 +1,179 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#8B4513" />
-    <meta name="description" content="Vintage Cultural Blog - A platform for cultural enthusiasts to explore books, movies, music, and thoughtful articles about art and culture." />
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#8B4513" />
+  
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Ứng dụng quản lý sách, phim, nhạc và blog cá nhân với phong cách vintage" />
+  <meta name="keywords" content="sách, phim, nhạc, blog, vintage, quản lý, đọc sách, xem phim" />
+  <meta name="author" content="Your Name" />
+  
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:title" content="Vintage Collection - Sách, Phim, Nhạc & Blog" />
+  <meta property="og:description" content="Ứng dụng quản lý sách, phim, nhạc và blog cá nhân với phong cách vintage" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://yourwebsite.com" />
+  <meta property="og:image" content="%PUBLIC_URL%/og-image.jpg" />
+  
+  <!-- Twitter Card Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Vintage Collection - Sách, Phim, Nhạc & Blog" />
+  <meta name="twitter:description" content="Ứng dụng quản lý sách, phim, nhạc và blog cá nhân với phong cách vintage" />
+  <meta name="twitter:image" content="%PUBLIC_URL%/twitter-image.jpg" />
+  
+  <!-- Apple Touch Icon -->
+  <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+  
+  <!-- Manifest -->
+  <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+  
+  <!-- Preconnect to external domains -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  
+  <!-- Google Fonts - Vintage Style -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  
+  <!-- Custom CSS Variables -->
+  <style>
+    :root {
+      --vintage-cream: #F5F5DC;
+      --vintage-brown: #8B4513;
+      --vintage-gold: #DAA520;
+      --vintage-dark: #2F1B14;
+      --vintage-light: #FFF8DC;
+      --vintage-accent: #CD853F;
+    }
     
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="Vintage Cultural Blog" />
-    <meta property="og:description" content="Explore timeless culture through books, movies, music, and thoughtful articles." />
-    <meta property="og:image" content="%PUBLIC_URL%/og-image.jpg" />
+    /* Loading styles */
+    .loading-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--vintage-cream);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      font-family: 'Playfair Display', serif;
+    }
     
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:title" content="Vintage Cultural Blog" />
-    <meta property="twitter:description" content="Explore timeless culture through books, movies, music, and thoughtful articles." />
-    <meta property="twitter:image" content="%PUBLIC_URL%/og-image.jpg" />
+    .loading-spinner {
+      width: 50px;
+      height: 50px;
+      border: 4px solid var(--vintage-light);
+      border-top: 4px solid var(--vintage-brown);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
     
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
     
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    /* Hide loading when React loads */
+    #root:not(:empty) + .loading-screen {
+      display: none;
+    }
     
-    <title>Vintage Cultural Blog</title>
-  </head>
-  <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-  </body>
+    /* Base styles */
+    * {
+      box-sizing: border-box;
+    }
+    
+    body {
+      margin: 0;
+      font-family: 'Crimson Text', serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      background-color: var(--vintage-cream);
+      color: var(--vintage-dark);
+      line-height: 1.6;
+    }
+    
+    code {
+      font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+    }
+    
+    /* Scrollbar styling */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    
+    ::-webkit-scrollbar-track {
+      background: var(--vintage-light);
+    }
+    
+    ::-webkit-scrollbar-thumb {
+      background: var(--vintage-brown);
+      border-radius: 4px;
+    }
+    
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--vintage-accent);
+    }
+  </style>
+  
+  <title>Vintage Collection - Sách, Phim, Nhạc & Blog</title>
+</head>
+<body>
+  <!-- No JavaScript fallback -->
+  <noscript>
+    <div style="text-align: center; padding: 50px; font-family: 'Playfair Display', serif;">
+      <h1>Oops! JavaScript bị tắt</h1>
+      <p>Bạn cần bật JavaScript để sử dụng ứng dụng này.</p>
+      <p>You need to enable JavaScript to run this app.</p>
+    </div>
+  </noscript>
+  
+  <!-- React Root -->
+  <div id="root"></div>
+  
+  <!-- Loading Screen -->
+  <div class="loading-screen">
+    <div style="text-align: center;">
+      <div class="loading-spinner"></div>
+      <p style="margin-top: 20px; color: var(--vintage-brown); font-size: 18px;">
+        Đang tải...
+      </p>
+    </div>
+  </div>
+  
+  <!-- Service Worker Registration -->
+  <script>
+    // Register service worker for PWA
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function() {
+        navigator.serviceWorker.register('%PUBLIC_URL%/sw.js')
+          .then(function(registration) {
+            console.log('SW registered: ', registration);
+          })
+          .catch(function(registrationError) {
+            console.log('SW registration failed: ', registrationError);
+          });
+      });
+    }
+  </script>
+  
+  <!-- Analytics (Google Analytics 4) -->
+  <!-- Uncomment and replace GA_MEASUREMENT_ID with your actual ID -->
+  <!--
+  <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'GA_MEASUREMENT_ID');
+  </script>
+  -->
+</body>
 </html>

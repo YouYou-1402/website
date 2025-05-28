@@ -1,0 +1,16 @@
+
+### 15.2 `frontend/DEPLOYMENT.md`
+```markdown
+# Deployment Guide
+
+## 🚀 Production Deployment
+
+### Environment Variables
+
+Create a `.env.production` file:
+
+```env
+REACT_APP_API_URL=https://your-api-domain.com/api
+REACT_APP_API_VERSION=v1
+REACT_APP_NAME=Vintage Cultural Blog
+REACT_APP_ENABLE_ANALYTICS=true
