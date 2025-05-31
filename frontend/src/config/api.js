@@ -67,7 +67,10 @@ export const API_ENDPOINTS = {
     UPDATE: (id) => `/reviews/${id}`,
     DELETE: (id) => `/reviews/${id}`,
     LIKE: (id) => `/reviews/${id}/like`
-  }
+  },
+
+  //profile
+  
 };
 
 export { API_BASE_URL };

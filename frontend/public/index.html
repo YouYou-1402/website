@@ -2,30 +2,30 @@
 <html lang="vi">
 <head>
   <meta charset="utf-8" />
-  <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+  <link rel="icon" href="%PUBLIC_URL%/logo-0.ico" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#8B4513" />
+  <meta name="theme-color" content="#166534" />
   
   <!-- SEO Meta Tags -->
-  <meta name="description" content="Ứng dụng quản lý sách, phim, nhạc và blog cá nhân với phong cách vintage" />
-  <meta name="keywords" content="sách, phim, nhạc, blog, vintage, quản lý, đọc sách, xem phim" />
-  <meta name="author" content="Your Name" />
+  <meta name="description" content="Trúc Đình - Không gian tĩnh lặng để nghỉ ngơi, suy tư và khám phá tri thức qua thơ văn, sách, nhạc và thiền" />
+  <meta name="keywords" content="trúc đình, thơ văn, sách, nhạc, thiền, blog, tri thức, tĩnh tâm, bamboo pavilion" />
+  <meta name="author" content="Trúc Đình" />
   
   <!-- Open Graph Meta Tags -->
-  <meta property="og:title" content="Vintage Collection - Sách, Phim, Nhạc & Blog" />
-  <meta property="og:description" content="Ứng dụng quản lý sách, phim, nhạc và blog cá nhân với phong cách vintage" />
+  <meta property="og:title" content="Trúc Đình" />
+  <meta property="og:description" content="Không gian tĩnh lặng để suy tư, khám phá tri thức qua thơ văn, sách, nhạc và thiền. Dù là từ bỏ hay kiên trì, cũng đều cần dũng khí." />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://yourwebsite.com" />
-  <meta property="og:image" content="%PUBLIC_URL%/og-image.jpg" />
+  <meta property="og:url" content="https://trucdinh.com" />
+  <meta property="og:image" content="%PUBLIC_URL%/og-bamboo.jpg" />
   
   <!-- Twitter Card Meta Tags -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Vintage Collection - Sách, Phim, Nhạc & Blog" />
-  <meta name="twitter:description" content="Ứng dụng quản lý sách, phim, nhạc và blog cá nhân với phong cách vintage" />
-  <meta name="twitter:image" content="%PUBLIC_URL%/twitter-image.jpg" />
+  <meta name="twitter:title" content="竹亭 Trúc Đình - Nghỉ ngơi một chút" />
+  <meta name="twitter:description" content="Không gian tĩnh lặng để suy tư, khám phá tri thức qua thơ văn, sách, nhạc và thiền" />
+  <meta name="twitter:image" content="%PUBLIC_URL%/twitter-bamboo.jpg" />
   
   <!-- Apple Touch Icon -->
-  <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+  <link rel="apple-touch-icon" href="%PUBLIC_URL%/bamboo-icon-192.png" />
   
   <!-- Manifest -->
   <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
@@ -34,117 +34,344 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   
-  <!-- Google Fonts - Vintage Style -->
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <!-- Google Fonts - Asian & Elegant Style -->
+  <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=Noto+Serif+SC:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
   
-  <!-- Font Awesome Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- Lucide Icons (for bamboo and nature icons) -->
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
   
-  <!-- Custom CSS Variables -->
+  <!-- Custom CSS Variables & Bamboo Theme -->
   <style>
     :root {
-      --vintage-cream: #F5F5DC;
-      --vintage-brown: #8B4513;
-      --vintage-gold: #DAA520;
-      --vintage-dark: #2F1B14;
-      --vintage-light: #FFF8DC;
-      --vintage-accent: #CD853F;
+      /* Bamboo Color Palette */
+      --bamboo-green-50: #f0fdf4;
+      --bamboo-green-100: #dcfce7;
+      --bamboo-green-200: #bbf7d0;
+      --bamboo-green-300: #86efac;
+      --bamboo-green-400: #4ade80;
+      --bamboo-green-500: #22c55e;
+      --bamboo-green-600: #16a34a;
+      --bamboo-green-700: #15803d;
+      --bamboo-green-800: #166534;
+      --bamboo-green-900: #14532d;
+      
+      /* Ancient Paper Colors */
+      --paper-cream: #fefbf3;
+      --paper-beige: #f5f1e8;
+      --paper-tan: #e8dcc6;
+      --paper-brown: #d4c4a0;
+      
+      /* Stone Colors */
+      --stone-50: #fafaf9;
+      --stone-100: #f5f5f4;
+      --stone-200: #e7e5e4;
+      --stone-300: #d6d3d1;
+      --stone-400: #a8a29e;
+      --stone-500: #78716c;
+      --stone-600: #57534e;
+      --stone-700: #44403c;
+      --stone-800: #292524;
+      --stone-900: #1c1917;
+      
+      /* Amber Accents */
+      --amber-50: #fffbeb;
+      --amber-100: #fef3c7;
+      --amber-200: #fde68a;
+      --amber-300: #fcd34d;
+      --amber-400: #fbbf24;
+      --amber-500: #f59e0b;
+      
+      /* Primary Theme Colors */
+      --primary-bg: var(--paper-cream);
+      --secondary-bg: var(--bamboo-green-50);
+      --accent-bg: var(--amber-50);
+      --text-primary: var(--bamboo-green-800);
+      --text-secondary: var(--bamboo-green-600);
+      --text-muted: var(--stone-500);
+      --border-color: var(--bamboo-green-200);
+      --shadow-color: rgba(22, 101, 52, 0.1);
     }
     
-    /* Loading styles */
+    /* Loading Screen with Bamboo Theme */
     .loading-screen {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: var(--vintage-cream);
+      background: linear-gradient(135deg, var(--paper-cream) 0%, var(--bamboo-green-50) 100%);
       display: flex;
       justify-content: center;
       align-items: center;
       z-index: 9999;
-      font-family: 'Playfair Display', serif;
+      font-family: 'Lora', serif;
+      overflow: hidden;
     }
     
-    .loading-spinner {
-      width: 50px;
-      height: 50px;
-      border: 4px solid var(--vintage-light);
-      border-top: 4px solid var(--vintage-brown);
+    .loading-content {
+      text-align: center;
+      position: relative;
+      z-index: 2;
+    }
+    
+    /* Bamboo Loading Animation */
+    .bamboo-loader {
+      width: 80px;
+      height: 80px;
+      position: relative;
+      margin: 0 auto 30px;
+    }
+    
+    .bamboo-stem {
+      width: 6px;
+      height: 60px;
+      background: linear-gradient(to bottom, var(--bamboo-green-400), var(--bamboo-green-600));
+      position: absolute;
+      left: 50%;
+      bottom: 0;
+      transform: translateX(-50%);
+      border-radius: 3px;
+      animation: bamboo-sway 2s ease-in-out infinite;
+    }
+    
+    .bamboo-leaves {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    
+    .bamboo-leaf {
+      width: 20px;
+      height: 8px;
+      background: var(--bamboo-green-500);
+      border-radius: 50% 10px 50% 10px;
+      position: absolute;
+      animation: leaf-flutter 3s ease-in-out infinite;
+    }
+    
+    .bamboo-leaf:nth-child(1) {
+      top: 5px;
+      left: -25px;
+      transform: rotate(-30deg);
+      animation-delay: 0s;
+    }
+    
+    .bamboo-leaf:nth-child(2) {
+      top: 15px;
+      right: -25px;
+      transform: rotate(30deg);
+      animation-delay: 0.5s;
+    }
+    
+    .bamboo-leaf:nth-child(3) {
+      top: 25px;
+      left: -30px;
+      transform: rotate(-45deg);
+      animation-delay: 1s;
+    }
+    
+    .bamboo-leaf:nth-child(4) {
+      top: 35px;
+      right: -30px;
+      transform: rotate(45deg);
+      animation-delay: 1.5s;
+    }
+    
+    /* Loading Animations */
+    @keyframes bamboo-sway {
+      0%, 100% { transform: translateX(-50%) rotate(0deg); }
+      25% { transform: translateX(-50%) rotate(2deg); }
+      75% { transform: translateX(-50%) rotate(-2deg); }
+    }
+    
+    @keyframes leaf-flutter {
+      0%, 100% { opacity: 0.7; transform: scale(1) rotate(var(--initial-rotation, 0deg)); }
+      50% { opacity: 1; transform: scale(1.1) rotate(calc(var(--initial-rotation, 0deg) + 10deg)); }
+    }
+    
+    @keyframes fade-in-up {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    
+    @keyframes floating-particles {
+      0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.3; }
+      50% { transform: translateY(-20px) rotate(180deg); opacity: 0.7; }
+    }
+    
+    /* Loading Text Styles */
+    .loading-title {
+      font-family: 'Ma Shan Zheng', 'Noto Serif SC', serif;
+      font-size: 3rem;
+      color: var(--bamboo-green-800);
+      margin-bottom: 10px;
+      animation: fade-in-up 1s ease-out;
+      text-shadow: 2px 2px 4px var(--shadow-color);
+    }
+    
+    .loading-subtitle {
+      font-family: 'Lora', serif;
+      font-size: 1.5rem;
+      color: var(--bamboo-green-600);
+      margin-bottom: 20px;
+      animation: fade-in-up 1s ease-out 0.3s both;
+    }
+    
+    .loading-text {
+      color: var(--bamboo-green-500);
+      font-size: 1rem;
+      animation: fade-in-up 1s ease-out 0.6s both;
+      font-style: italic;
+    }
+    
+    /* Floating Background Particles */
+    .floating-particles {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      overflow: hidden;
+    }
+    
+    .particle {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: var(--bamboo-green-300);
       border-radius: 50%;
-      animation: spin 1s linear infinite;
+      animation: floating-particles 6s ease-in-out infinite;
     }
     
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
+    .particle:nth-child(1) { left: 10%; top: 20%; animation-delay: 0s; animation-duration: 6s; }
+    .particle:nth-child(2) { left: 20%; top: 80%; animation-delay: 1s; animation-duration: 8s; }
+    .particle:nth-child(3) { left: 60%; top: 30%; animation-delay: 2s; animation-duration: 7s; }
+    .particle:nth-child(4) { left: 80%; top: 70%; animation-delay: 3s; animation-duration: 9s; }
+    .particle:nth-child(5) { left: 30%; top: 50%; animation-delay: 4s; animation-duration: 5s; }
+    .particle:nth-child(6) { left: 70%; top: 10%; animation-delay: 5s; animation-duration: 6s; }
     
     /* Hide loading when React loads */
     #root:not(:empty) + .loading-screen {
       display: none;
     }
     
-    /* Base styles */
+    /* Base styles with Bamboo theme */
     * {
       box-sizing: border-box;
     }
     
     body {
       margin: 0;
-      font-family: 'Crimson Text', serif;
+      font-family: 'Lora', 'Crimson Text', serif;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
-      background-color: var(--vintage-cream);
-      color: var(--vintage-dark);
-      line-height: 1.6;
+      background: linear-gradient(135deg, var(--primary-bg) 0%, var(--secondary-bg) 100%);
+      color: var(--text-primary);
+      line-height: 1.7;
+      overflow-x: hidden;
     }
     
     code {
-      font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+      font-family: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace;
+      background: var(--bamboo-green-50);
+      padding: 2px 6px;
+      border-radius: 4px;
+      border: 1px solid var(--border-color);
     }
     
-    /* Scrollbar styling */
+    /* Enhanced Scrollbar with Bamboo theme */
     ::-webkit-scrollbar {
-      width: 8px;
+      width: 12px;
     }
     
     ::-webkit-scrollbar-track {
-      background: var(--vintage-light);
+      background: var(--bamboo-green-50);
+      border-radius: 6px;
     }
     
     ::-webkit-scrollbar-thumb {
-      background: var(--vintage-brown);
-      border-radius: 4px;
+      background: linear-gradient(to bottom, var(--bamboo-green-400), var(--bamboo-green-600));
+      border-radius: 6px;
+      border: 2px solid var(--bamboo-green-50);
     }
     
     ::-webkit-scrollbar-thumb:hover {
-      background: var(--vintage-accent);
+      background: linear-gradient(to bottom, var(--bamboo-green-500), var(--bamboo-green-700));
+    }
+    
+    /* Selection styling */
+    ::selection {
+      background: var(--bamboo-green-200);
+      color: var(--bamboo-green-800);
+    }
+    
+    ::-moz-selection {
+      background: var(--bamboo-green-200);
+      color: var(--bamboo-green-800);
+    }
+    
+    /* Focus styles */
+    :focus {
+      outline: 2px solid var(--bamboo-green-400);
+      outline-offset: 2px;
+    }
+    
+    /* Smooth transitions */
+    * {
+      transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
     }
   </style>
   
-  <title>Vintage Collection - Sách, Phim, Nhạc & Blog</title>
+  <title>Trúc Đình</title>
 </head>
 <body>
   <!-- No JavaScript fallback -->
   <noscript>
-    <div style="text-align: center; padding: 50px; font-family: 'Playfair Display', serif;">
-      <h1>Oops! JavaScript bị tắt</h1>
-      <p>Bạn cần bật JavaScript để sử dụng ứng dụng này.</p>
-      <p>You need to enable JavaScript to run this app.</p>
+    <div style="text-align: center; padding: 50px; font-family: 'Lora', serif; background: var(--primary-bg); min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+      <div style="max-width: 500px; padding: 40px; background: white; border-radius: 20px; box-shadow: 0 10px 30px var(--shadow-color); border: 2px solid var(--border-color);">
+        <div style="font-size: 4rem; margin-bottom: 20px;">🎋</div>
+        <h1 style="color: var(--bamboo-green-800); font-family: 'Ma Shan Zheng', serif; font-size: 2.5rem; margin-bottom: 15px;">竹亭</h1>
+        <h2 style="color: var(--bamboo-green-600); font-size: 1.5rem; margin-bottom: 20px;">JavaScript bị tắt</h2>
+        <p style="color: var(--text-secondary); margin-bottom: 15px; line-height: 1.6;">Bạn cần bật JavaScript để vào Trúc Đình và thưởng thức không gian tĩnh lặng này.</p>
+        <p style="color: var(--text-muted); font-style: italic;">You need to enable JavaScript to enter the Bamboo Pavilion.</p>
+      </div>
     </div>
   </noscript>
   
   <!-- React Root -->
   <div id="root"></div>
   
-  <!-- Loading Screen -->
+  <!-- Enhanced Loading Screen -->
   <div class="loading-screen">
-    <div style="text-align: center;">
-      <div class="loading-spinner"></div>
-      <p style="margin-top: 20px; color: var(--vintage-brown); font-size: 18px;">
-        Đang tải...
-      </p>
+    <!-- Floating Background Particles -->
+    <div class="floating-particles">
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+    </div>
+    
+    <!-- Loading Content -->
+    <div class="loading-content">
+      <!-- Bamboo Loader Animation -->
+      <div class="bamboo-loader">
+        <div class="bamboo-stem"></div>
+        <div class="bamboo-leaves">
+          <div class="bamboo-leaf" style="--initial-rotation: -30deg;"></div>
+          <div class="bamboo-leaf" style="--initial-rotation: 30deg;"></div>
+          <div class="bamboo-leaf" style="--initial-rotation: -45deg;"></div>
+          <div class="bamboo-leaf" style="--initial-rotation: 45deg;"></div>
+        </div>
+      </div>
+      
+      <!-- Loading Text -->
+      <h1 class="loading-title">竹亭</h1>
+      <h2 class="loading-subtitle">Trúc Đình</h2>
+      <p class="loading-text">Đang chuẩn bị không gian tĩnh lặng...</p>
     </div>
   </div>
   
@@ -155,13 +382,52 @@
       window.addEventListener('load', function() {
         navigator.serviceWorker.register('%PUBLIC_URL%/sw.js')
           .then(function(registration) {
-            console.log('SW registered: ', registration);
+            console.log('🎋 Trúc Đình SW registered: ', registration);
           })
           .catch(function(registrationError) {
-            console.log('SW registration failed: ', registrationError);
+            console.log('🎋 Trúc Đình SW registration failed: ', registrationError);
           });
       });
     }
+    
+    // Initialize Lucide icons when available
+    document.addEventListener('DOMContentLoaded', function() {
+      if (typeof lucide !== 'undefined') {
+        lucide.createIcons();
+      }
+    });
+    
+    // Add some ambient interaction
+    document.addEventListener('mousemove', function(e) {
+      const particles = document.querySelectorAll('.particle');
+      particles.forEach((particle, index) => {
+        const speed = (index + 1) * 0.01;
+        const x = e.clientX * speed;
+        const y = e.clientY * speed;
+        particle.style.transform = `translate(${x}px, ${y}px)`;
+      });
+    });
+  </script>
+  
+  <!-- Performance Monitoring -->
+  <script>
+    // Simple performance monitoring
+    window.addEventListener('load', function() {
+      const loadTime = performance.now();
+      console.log(`🎋 Trúc Đình loaded in ${Math.round(loadTime)}ms`);
+      
+      // Hide loading screen with fade effect
+      const loadingScreen = document.querySelector('.loading-screen');
+      if (loadingScreen) {
+        setTimeout(() => {
+          loadingScreen.style.opacity = '0';
+          loadingScreen.style.transition = 'opacity 0.5s ease-out';
+          setTimeout(() => {
+            loadingScreen.style.display = 'none';
+          }, 500);
+        }, 1000); // Show loading for at least 1 second for aesthetic
+      }
+    });
   </script>
   
   <!-- Analytics (Google Analytics 4) -->
@@ -172,7 +438,10 @@
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-    gtag('config', 'GA_MEASUREMENT_ID');
+    gtag('config', 'GA_MEASUREMENT_ID', {
+      page_title: '竹亭 Trúc Đình',
+      page_location: window.location.href
+    });
   </script>
   -->
 </body>
